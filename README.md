@@ -24,6 +24,10 @@ pirate_response = pirate_bot("Tell me about sailing ships")
 print(pirate_response)
 ```
 
+## About
+
+This project is the case study from [Ship Python, Orchestrate AI: Professional Python in the AI Era](https://michael-borck.github.io/ship-python-orchestrate-ai), a book about professional Python development practices.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
