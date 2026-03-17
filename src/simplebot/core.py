@@ -1,16 +1,18 @@
 """Core functionality for SimpleBot."""
 
-import requests
 import random
 import time
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
+
+import requests
 
 # Cache for the last used model to avoid redundant loading messages
 _last_model: Optional[str] = None
 
+
 def get_response(
     prompt: str,
-    model: str = "llama3",
+    model: str = "gemma3:4b",
     system: str = "You are a helpful assistant.",
     stream: bool = False,
     api_url: Optional[str] = None,
@@ -30,9 +32,9 @@ def get_response(
     """
     global _last_model
 
-    # Default to local Ollama if no API URL is provided
+    # Default to hosted Ollama server
     if api_url is None:
-        api_url = "http://localhost:11434/api/generate"
+        api_url = "https://ollama.locollm.org/api/generate"
 
     # Handle model switching with friendly messages
     if model != _last_model:
@@ -58,19 +60,16 @@ def get_response(
         "model": model,
         "prompt": prompt,
         "system": system,
-        "stream": stream
+        "stream": stream,
     }
 
     try:
         # Send request to the LLM API
-        response = requests.post(
-            api_url,
-            json=payload,
-            timeout=10
-        )
+        headers = {"Authorization": "Bearer Curtin2026ISYS20015002"}
+        response = requests.post(api_url, json=payload, headers=headers, timeout=30)
         response.raise_for_status()
         data = response.json()
-        return data.get("response", "No response from model.")
+        return str(data.get("response", "No response from model."))
     except requests.RequestException as e:
         return f"Connection Error: {str(e)}"
     except Exception as e:

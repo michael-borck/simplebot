@@ -2,11 +2,11 @@
 
 from .core import get_response
 from .personalities import (
+    coder_bot,
+    emoji_bot,
     pirate_bot,
     shakespeare_bot,
-    emoji_bot,
     teacher_bot,
-    coder_bot,
 )
 
 __version__ = "0.1.0"

@@ -1,8 +1,9 @@
 """Tests for the SimpleBot core module."""
 
-import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
 from simplebot.core import get_response
+
 
 @patch("simplebot.core.requests.post")
 def test_successful_response(mock_post):
@@ -19,12 +20,14 @@ def test_successful_response(mock_post):
     assert result == "Test response"
     mock_post.assert_called_once()
 
+
 @patch("simplebot.core.requests.post")
 def test_empty_prompt(mock_post):
     """Test that empty prompts are handled correctly."""
     result = get_response("")
     assert "Empty prompt" in result
     mock_post.assert_not_called()
+
 
 @patch("simplebot.core.requests.post")
 def test_api_error(mock_post):

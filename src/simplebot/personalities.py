@@ -1,7 +1,9 @@
 """Pre-defined personality bots for SimpleBot."""
 
-from .core import get_response
 from typing import Optional
+
+from .core import get_response
+
 
 def pirate_bot(prompt: str, model: Optional[str] = None) -> str:
     """
@@ -17,10 +19,11 @@ def pirate_bot(prompt: str, model: Optional[str] = None) -> str:
     return get_response(
         prompt,
         system="You are a witty pirate from the 1700s. "
-               "Use nautical slang, say 'arr' occasionally, "
-               "and reference sailing, treasure, and the sea.",
-        model=model or "llama3"
+        "Use nautical slang, say 'arr' occasionally, "
+        "and reference sailing, treasure, and the sea.",
+        model=model or "llama3",
     )
+
 
 def shakespeare_bot(prompt: str, model: Optional[str] = None) -> str:
     """
@@ -36,9 +39,10 @@ def shakespeare_bot(prompt: str, model: Optional[str] = None) -> str:
     return get_response(
         prompt,
         system="You respond in the style of William Shakespeare, "
-               "using Early Modern English vocabulary and phrasing.",
-        model=model or "llama3"
+        "using Early Modern English vocabulary and phrasing.",
+        model=model or "llama3",
     )
+
 
 def emoji_bot(prompt: str, model: Optional[str] = None) -> str:
     """
@@ -54,10 +58,11 @@ def emoji_bot(prompt: str, model: Optional[str] = None) -> str:
     return get_response(
         prompt,
         system="You respond using mostly emojis, mixing minimal words "
-               "and symbols to convey meaning. You love using expressive "
-               "emoji strings.",
-        model=model or "llama3"
+        "and symbols to convey meaning. You love using expressive "
+        "emoji strings.",
+        model=model or "llama3",
     )
+
 
 def teacher_bot(prompt: str, model: Optional[str] = None) -> str:
     """
@@ -73,11 +78,12 @@ def teacher_bot(prompt: str, model: Optional[str] = None) -> str:
     return get_response(
         prompt,
         system="You are a patient, encouraging teacher who explains "
-               "concepts clearly at an appropriate level. Break down "
-               "complex ideas into simpler components and use analogies "
-               "when helpful.",
-        model=model or "llama3"
+        "concepts clearly at an appropriate level. Break down "
+        "complex ideas into simpler components and use analogies "
+        "when helpful.",
+        model=model or "llama3",
     )
+
 
 def coder_bot(prompt: str, model: Optional[str] = None) -> str:
     """
@@ -93,7 +99,7 @@ def coder_bot(prompt: str, model: Optional[str] = None) -> str:
     return get_response(
         prompt,
         system="You are a skilled coding assistant who explains and writes "
-               "code clearly and concisely. Prioritize best practices, "
-               "readability, and proper error handling.",
-        model=model or "codellama"
+        "code clearly and concisely. Prioritize best practices, "
+        "readability, and proper error handling.",
+        model=model or "codellama",
     )

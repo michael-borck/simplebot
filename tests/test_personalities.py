@@ -1,14 +1,12 @@
 """Tests for the SimpleBot personalities module."""
 
-import pytest
 from unittest.mock import patch
+
 from simplebot import (
     pirate_bot,
     shakespeare_bot,
-    emoji_bot,
-    teacher_bot,
-    coder_bot,
 )
+
 
 @patch("simplebot.personalities.get_response")
 def test_pirate_bot(mock_get_response):
@@ -25,6 +23,7 @@ def test_pirate_bot(mock_get_response):
     # Check that system prompt contains pirate references
     system_arg = mock_get_response.call_args[1]["system"]
     assert "pirate" in system_arg.lower()
+
 
 @patch("simplebot.personalities.get_response")
 def test_custom_model(mock_get_response):
