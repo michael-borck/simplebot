@@ -66,7 +66,7 @@ def get_response(
     try:
         # Send request to the LLM API
         headers = {"Authorization": "Bearer Curtin2026ISYS20015002"}
-        response = requests.post(api_url, json=payload, headers=headers, timeout=30)
+        response = requests.post(api_url, json=payload, headers=headers, timeout=120)
         response.raise_for_status()
         data = response.json()
         return str(data.get("response", "No response from model."))
